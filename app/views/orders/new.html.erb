@@ -1,3 +1,7 @@
+<% if @order.errors.any? %>
+  <h4 style="color: red;"><%= @order.errors.full_messages.to_sentence %></h4>
+<% end %>
+
 <%= form_for @order do |f|%>
 
   <%= f.select :customer_id, @customers.map {|c| [c.name, c.id]} %>
