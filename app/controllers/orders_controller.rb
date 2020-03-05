@@ -14,20 +14,23 @@ class OrdersController < ApplicationController
     #       "controller"=>"orders",
     #       "action"=>"create"}
 
-    @order = Order.new(
-      customer_id: params[:order][:customer_id],
-      item_ids: params[:order][:item_ids]
-    )
+    @order = Order.new(order_params)
     if @order.save
       redirect_to order_path(@order)
     else
+      @customers = Customer.all
+      @items = Item.all
       render :new
     end
   end
 
+  # get '/orders/:id'
   def show
-
+    @order = Order.find(params[:id])
   end
 
+  def order_params
+    params.require(:order).permit(:customer_id, item_ids: [])
+  end
 
 end
