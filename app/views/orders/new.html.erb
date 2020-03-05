@@ -1,1 +1,8 @@
-new order form
+<%= form_for @order do |f|%>
+
+  <%= f.select :customer_id, @customers.map {|c| [c.name, c.id]} %>
+  <%= f.collection_check_boxes :item_ids, @items, :id, :name %>
+  <%= f.submit %>
+<% end %>
+
+<%# collection_select(object, method, collection, value_method, text_method, options = {}, html_option %>
