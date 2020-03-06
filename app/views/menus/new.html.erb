@@ -6,7 +6,7 @@
   <%= f.label :name %>
   <%= f.text_field :name %><br>
   <p>Create a new item!</p>
-  <%= f.fields_for :items, @menu.items.build do |item| %>
+  <%= f.fields_for :items, @new_items do |item| %>
     <%= item.text_field :name, placeholder: "name" %><br>
     <%= item.number_field :price, placeholder: "price" %><br>
     <%= item.text_field :description, placeholder: "description" %><br>
